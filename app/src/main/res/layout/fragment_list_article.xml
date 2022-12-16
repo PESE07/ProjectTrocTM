@@ -10,4 +10,5 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".ListArticleFragment"
-    tools:listitem="@layout/fragment_list_article_item" />
+    tools:listitem="@layout/fragment_list_article_item"
+    android:tag="trocList"/>
