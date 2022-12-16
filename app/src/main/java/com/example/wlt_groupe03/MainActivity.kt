@@ -24,6 +24,12 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+        binding.btnMainActivityAddItems.setOnClickListener {
+            val intent = Intent(this, AddingItems::class.java).also {
+                startActivity(it)
+
+            }
+        }
     }
 
 }

@@ -43,7 +43,7 @@
                 android:id="@+id/btn_mainActivity_displayingItems"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
-                android:text="Liste des données" />
+                android:text="Liste des articles" />
         </TableRow>
 
         <TableRow
@@ -52,10 +52,10 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btn_mainActivity_addItems"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="Ajouter un nouvel article" />
         </TableRow>
 
         <TableRow
