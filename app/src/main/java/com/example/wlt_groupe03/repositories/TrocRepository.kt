@@ -7,12 +7,12 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface TrocRepository {
-    @GET("article")
+    @GET("Article")
     suspend fun fetchAll(): List<DtoInputTroc>
 
-    @POST("article/create")
+    @POST("Article/Create")
     suspend fun create(@Query("name") name:String,
                        @Query("urlImage") urlImage:String,
-                       @Query("categoryName") categoryName:String,
+                       @Query("nomCat") categoryName:String,
                        @Query("description") description:String):DtoInputTroc
 }

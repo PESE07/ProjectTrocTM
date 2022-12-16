@@ -13,16 +13,13 @@ import com.example.wlt_groupe03.dtos.DtoOutputAddItem
 
 class AddingItemsFragment : Fragment() {
 
-    private lateinit var viewModel: TrocManagerViewModel
+
     private lateinit var binding: FragmentAddItemsBinding
     private lateinit var listArticleFragment: ListArticleFragment
 
-    private var formCreateArticleFragment = FormCreateArticleFragment.newInstance {
-        viewModel.launchCreateArticle(it)
-        childFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerView_fragmentAddArticle, listArticleFragment)
-            .commit()
-    }
+
+
+
 
 
     override fun onCreateView(
@@ -30,7 +27,7 @@ class AddingItemsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddItemsBinding.inflate(layoutInflater,container, false)
-        viewModel = ViewModelProvider(this).get(TrocManagerViewModel::class.java)
+
 
 
         return binding.root

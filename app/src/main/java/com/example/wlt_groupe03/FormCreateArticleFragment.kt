@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.example.wlt_groupe03.databinding.FragmentAddItemsBinding
 import com.example.wlt_groupe03.databinding.FragmentFormCreateArticleBinding
 import com.example.wlt_groupe03.dtos.DtoOutputAddItem
 
 class FormCreateArticleFragment : Fragment() {
     private lateinit var binding: FragmentFormCreateArticleBinding
+    private lateinit var viewModel: TrocManagerViewModel
     private var callbackOnSubmit:((dto: DtoOutputAddItem)->Unit)? = null
 
 
@@ -20,7 +22,7 @@ class FormCreateArticleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFormCreateArticleBinding.inflate(layoutInflater, container, false)
-
+        viewModel = ViewModelProvider(this).get(TrocManagerViewModel::class.java)
         binding.btnAddItems.setOnClickListener {
             val article = DtoOutputAddItem(binding.etNomArticle.text.toString(),binding.etImageArticle.text.toString()
                 ,binding.etCategorieArticle.text.toString(),binding.etDescriptionArticle.text.toString())
@@ -29,6 +31,10 @@ class FormCreateArticleFragment : Fragment() {
             binding.etCategorieArticle.text.clear()
             binding.etDescriptionArticle.text.clear()
             callbackOnSubmit?.invoke(article)
+
+            viewModel.launchCreateArticle(article)
+
+
         }
         return binding.root
     }

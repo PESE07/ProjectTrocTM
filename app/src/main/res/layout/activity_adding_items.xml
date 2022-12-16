@@ -12,10 +12,10 @@
         android:name="com.example.wlt_groupe03.AddingItemsFragment"
         android:layout_width="385dp"
         android:layout_height="613dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout="@layout/fragment_add_items" />
 </androidx.constraintlayout.widget.ConstraintLayout>
