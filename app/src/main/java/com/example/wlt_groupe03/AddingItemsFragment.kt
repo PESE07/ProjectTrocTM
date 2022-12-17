@@ -17,18 +17,11 @@ class AddingItemsFragment : Fragment() {
     private lateinit var binding: FragmentAddItemsBinding
     private lateinit var listArticleFragment: ListArticleFragment
 
-
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddItemsBinding.inflate(layoutInflater,container, false)
-
-
 
         return binding.root
     }

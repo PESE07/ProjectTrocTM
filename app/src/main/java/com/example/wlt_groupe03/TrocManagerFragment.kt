@@ -13,6 +13,7 @@ class TrocManagerFragment : Fragment() {
     private lateinit var viewModel: TrocManagerViewModel
     private lateinit var binding: FragmentTrocManagerBinding
     private lateinit var listArticleFragment: ListArticleFragment
+    private val detailArticleFragment = DetailArticleFragment()
 
 
     override fun onCreateView(
@@ -34,6 +35,12 @@ class TrocManagerFragment : Fragment() {
             listArticleFragment.addTroc(it)
         }
 
+        binding.bAfficherDetail.setOnClickListener(){
+            childFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragmentContainerView, detailArticleFragment)
+                .commit()
+        }
         //lancement de la requete
         viewModel.launchFetchAllTodo()
 

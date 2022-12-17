@@ -1,5 +1,6 @@
 package com.example.wlt_groupe03
 
+import android.content.Intent
 import android.net.Uri
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 
 import com.example.wlt_groupe03.placeholder.PlaceholderContent.PlaceholderItem
@@ -21,20 +24,45 @@ import java.net.URL
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class TrocRecyclerViewAdapter(
-    private val values: List<DtoInputTroc>
+class TrocRecyclerViewAdapter(private val values: List<DtoInputTroc>) : RecyclerView.Adapter<TrocRecyclerViewAdapter.ViewHolder>() {
 
-) : RecyclerView.Adapter<TrocRecyclerViewAdapter.ViewHolder>() {
+    var onItemClick : ((DtoInputTroc) -> Unit) ? = null
+
+    inner class ViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val titleView: TextView = itemView.findViewById(R.id.tv_nomArticle)
+
+        val imageView : ImageView = itemView.findViewById(R.id.iv_articleImage)
+        //private lateinit var recyclerView: RecyclerView
+        //private val trocList:ArrayList<DtoInputTroc> = arrayListOf();
+        //init {
+            //itemView.setOnClickListener{ v : View->
+                //val position : Int = adapterPosition
+                //recyclerView = itemView.findViewById(R.id.rv_listArticles)
+                //recyclerView.setHasFixedSize(true)
+                //recyclerView.layoutManager = LinearLayoutManager(itemView.context)
+
+                //recyclerView.adapter = TrocRecyclerViewAdapter(trocList);
+
+
+                //Toast.makeText(itemView.context, "You clicked on item ${position + 1}", Toast.LENGTH_SHORT).show()
+                //val intent = Intent(itemView.context, DetailActivity::class.java)
+
+            //}
+        //}
+
+
+
+        override fun toString(): String {
+            return super.toString() + " '" + titleView.text + "'"
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.fragment_list_article_item,parent,false)
 
-        return ViewHolder(
-            FragmentListArticleItemBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+
+        return ViewHolder(v)
 
     }
 
@@ -47,23 +75,14 @@ class TrocRecyclerViewAdapter(
             .into(holder.imageView)
 
         holder.titleView.text = item.name
+
+        holder.itemView.setOnClickListener {
+            Toast.makeText(holder.itemView.context,  "${item.description}", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentListArticleItemBinding) :
 
-
-        RecyclerView.ViewHolder(binding.root) {
-
-        val titleView: TextView = binding.tvTrocItemTitle
-
-        val imageView : ImageView = binding.tvTrocItemImage
-
-
-        override fun toString(): String {
-            return super.toString() + " '" + titleView.text + "'"
-        }
-    }
 
 }

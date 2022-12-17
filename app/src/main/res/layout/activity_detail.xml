@@ -3,18 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/detailArticle"
     android:layout_height="match_parent"
-    tools:context=".DisplayingItems">
+    tools:context=".DetailActivity">
+
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fcv_listArticle"
-        android:name="com.example.wlt_groupe03.TrocManagerFragment"
-        android:layout_width="400dp"
-        android:layout_height="479dp"
-        android:layout_marginBottom="100dp"
+        android:id="@+id/fcv_detailArticle"
+        android:name="com.example.wlt_groupe03.DetailArticleFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout="@layout/fragment_troc_manager" />
+        tools:layout="@layout/fragment_detail_article" />
 </androidx.constraintlayout.widget.ConstraintLayout>
