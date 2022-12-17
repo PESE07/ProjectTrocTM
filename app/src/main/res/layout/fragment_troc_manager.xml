@@ -8,14 +8,10 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="com.example.wlt_groupe03.ListArticleFragment"
-        android:layout_width="341dp"
-        android:layout_height="591dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:tag="trocList"
         tools:layout="@layout/fragment_list_article" />
 
-    <Button
-        android:id="@+id/b_afficherDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Detail" />
+
 </FrameLayout>

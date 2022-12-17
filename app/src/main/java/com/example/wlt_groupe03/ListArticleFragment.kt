@@ -19,8 +19,9 @@ import com.example.wlt_groupe03.dtos.DtoInputTroc
 class ListArticleFragment : Fragment() {
     private val trocList:ArrayList<DtoInputTroc> = arrayListOf()
     private val trocAdapter = TrocRecyclerViewAdapter(trocList)
-    private val detailArticleFragment = DetailArticleFragment()
     private lateinit var binding: FragmentListArticleItemBinding
+    private lateinit var detailArticleFragment : DetailArticleFragment
+    private lateinit var trocManagerFragment : TrocManagerFragment
 
 
 
@@ -34,19 +35,17 @@ class ListArticleFragment : Fragment() {
         if (view is RecyclerView) {
             with(view) {
                 layoutManager = LinearLayoutManager(context)
-                adapter = trocAdapter
+                adapter = trocAdapter.apply {
+                    onItemOnClickListener = {
+                        detailArticleFragment = DetailArticleFragment(it)
+                        parentFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.fragmentContainerView, detailArticleFragment)
+                            .commit()
+                    }
+                }
             }
         }
-
-        binding.cvItem.setOnClickListener{
-            childFragmentManager
-                .beginTransaction()
-                .replace(R.id.rv_listArticle, detailArticleFragment)
-                .commit()
-        }
-
-
-
 
         return view
     }

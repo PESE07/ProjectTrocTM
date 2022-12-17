@@ -7,13 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.wlt_groupe03.databinding.FragmentAddItemsBinding
+import com.example.wlt_groupe03.databinding.FragmentListArticleItemBinding
 import com.example.wlt_groupe03.databinding.FragmentTrocManagerBinding
+import com.example.wlt_groupe03.dtos.DtoInputTroc
 
 class TrocManagerFragment : Fragment() {
     private lateinit var viewModel: TrocManagerViewModel
     private lateinit var binding: FragmentTrocManagerBinding
     private lateinit var listArticleFragment: ListArticleFragment
-    private val detailArticleFragment = DetailArticleFragment()
+    private lateinit var detailArticleFragment : DetailArticleFragment
 
 
     override fun onCreateView(
@@ -35,16 +37,20 @@ class TrocManagerFragment : Fragment() {
             listArticleFragment.addTroc(it)
         }
 
-        binding.bAfficherDetail.setOnClickListener(){
-            childFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragmentContainerView, detailArticleFragment)
-                .commit()
-        }
+
         //lancement de la requete
         viewModel.launchFetchAllTodo()
 
         return binding.root
     }
+
+    fun changementVue(){
+        parentFragmentManager
+            .beginTransaction()
+            .replace(R.id.rv_listArticle, detailArticleFragment)
+            .commit()
+    }
+
+
 
 }

@@ -9,12 +9,11 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcv_listArticle"
         android:name="com.example.wlt_groupe03.TrocManagerFragment"
-        android:layout_width="400dp"
-        android:layout_height="479dp"
-        android:layout_marginBottom="100dp"
+        android:layout_width="398dp"
+        android:layout_height="723dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout="@layout/fragment_troc_manager" />
 </androidx.constraintlayout.widget.ConstraintLayout>

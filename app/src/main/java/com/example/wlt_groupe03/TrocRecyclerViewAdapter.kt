@@ -9,12 +9,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 
 import com.example.wlt_groupe03.placeholder.PlaceholderContent.PlaceholderItem
 import com.example.wlt_groupe03.databinding.FragmentListArticleBinding
 import com.example.wlt_groupe03.databinding.FragmentListArticleItemBinding
+import com.example.wlt_groupe03.databinding.FragmentTrocManagerBinding
 import com.example.wlt_groupe03.dtos.DtoInputTroc
 import retrofit2.http.Url
 import java.net.HttpURLConnection
@@ -26,34 +29,14 @@ import java.net.URL
  */
 class TrocRecyclerViewAdapter(private val values: List<DtoInputTroc>) : RecyclerView.Adapter<TrocRecyclerViewAdapter.ViewHolder>() {
 
-    var onItemClick : ((DtoInputTroc) -> Unit) ? = null
+    var onItemOnClickListener: ((item: DtoInputTroc)-> Unit)? = null;
 
     inner class ViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val titleView: TextView = itemView.findViewById(R.id.tv_nomArticle)
 
         val imageView : ImageView = itemView.findViewById(R.id.iv_articleImage)
-        //private lateinit var recyclerView: RecyclerView
-        //private val trocList:ArrayList<DtoInputTroc> = arrayListOf();
-        //init {
-            //itemView.setOnClickListener{ v : View->
-                //val position : Int = adapterPosition
-                //recyclerView = itemView.findViewById(R.id.rv_listArticles)
-                //recyclerView.setHasFixedSize(true)
-                //recyclerView.layoutManager = LinearLayoutManager(itemView.context)
-
-                //recyclerView.adapter = TrocRecyclerViewAdapter(trocList);
-
-
-                //Toast.makeText(itemView.context, "You clicked on item ${position + 1}", Toast.LENGTH_SHORT).show()
-                //val intent = Intent(itemView.context, DetailActivity::class.java)
-
-            //}
-        //}
-
-
-
-        override fun toString(): String {
+               override fun toString(): String {
             return super.toString() + " '" + titleView.text + "'"
         }
     }
@@ -77,7 +60,8 @@ class TrocRecyclerViewAdapter(private val values: List<DtoInputTroc>) : Recycler
         holder.titleView.text = item.name
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(holder.itemView.context,  "${item.description}", Toast.LENGTH_SHORT).show()
+            val item = values[position]
+            onItemOnClickListener?.invoke(item)
         }
     }
 
