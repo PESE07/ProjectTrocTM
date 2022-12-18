@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
                 val password = binding.tvPasswordUser.text.toString()
 
 
-                viewModel.launchGetUser(mail, password)
-                val user = viewModel.recupUtil()
+                val user = viewModel.launchGetUser(mail, password)
+
                 Toast.makeText(this, "${user}", Toast.LENGTH_SHORT).show()
                 if(user == null){
                     Toast.makeText(this, "Les données encoder ne sont pas correct", Toast.LENGTH_SHORT).show()

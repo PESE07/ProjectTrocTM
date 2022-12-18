@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.wlt_groupe03.databinding.FragmentAddItemsBinding
 import com.example.wlt_groupe03.databinding.FragmentFormCreateArticleBinding
@@ -24,17 +25,23 @@ class FormCreateArticleFragment : Fragment() {
         binding = FragmentFormCreateArticleBinding.inflate(layoutInflater, container, false)
         viewModel = ViewModelProvider(this).get(TrocManagerViewModel::class.java)
         binding.btnAddItems.setOnClickListener {
-            val article = DtoOutputAddItem(binding.etNomArticle.text.toString(),binding.etImageArticle.text.toString()
-                ,binding.etCategorieArticle.text.toString(),binding.etDescriptionArticle.text.toString())
-            binding.etNomArticle.text.clear()
-            binding.etImageArticle.text.clear()
-            binding.etCategorieArticle.text.clear()
-            binding.etDescriptionArticle.text.clear()
-            callbackOnSubmit?.invoke(article)
 
-            viewModel.launchCreateArticle(article)
+            if(binding.etNomArticle.text.isNullOrBlank() || binding.etImageArticle.text.isNullOrBlank()
+                || binding.etCategorieArticle.text.isNullOrBlank() || binding.etDescriptionArticle.text.isNullOrBlank()){
+                Toast.makeText(it.context, "Veuillez remplir tout les champs si dessus", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                val article = DtoOutputAddItem(binding.etNomArticle.text.toString(),binding.etImageArticle.text.toString()
+                    ,binding.etCategorieArticle.text.toString(),binding.etDescriptionArticle.text.toString())
+                binding.etNomArticle.text.clear()
+                binding.etImageArticle.text.clear()
+                binding.etCategorieArticle.text.clear()
+                binding.etDescriptionArticle.text.clear()
+                callbackOnSubmit?.invoke(article)
 
+                viewModel.launchCreateArticle(article)
 
+            }
         }
         return binding.root
     }

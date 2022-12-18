@@ -17,6 +17,8 @@ class TrocManagerViewModel : ViewModel() {
     val mutableLiveDataCreateArticle: MutableLiveData<DtoInputTroc> = MutableLiveData()
     private var dtoUser : DtoUser? = null
 
+
+
     fun launchFetchAllTodo(){
         viewModelScope.launch {
             // flèche tout à gauche signifie qu'on est bien synchrone
@@ -35,7 +37,7 @@ class TrocManagerViewModel : ViewModel() {
         }
     }
 
-    fun launchGetUser(email : String, mdp :String) {
+    fun launchGetUser(email : String, mdp :String): DtoUser? {
         viewModelScope.launch {
 
             try{
@@ -45,11 +47,10 @@ class TrocManagerViewModel : ViewModel() {
                 dtoUser = null
             }
         }
-    }
-
-    fun recupUtil() : DtoUser? {
         return dtoUser
     }
+
+
 
 
 
