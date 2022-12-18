@@ -15,7 +15,6 @@ class AddingItemsFragment : Fragment() {
 
 
     private lateinit var binding: FragmentAddItemsBinding
-    private lateinit var listArticleFragment: ListArticleFragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

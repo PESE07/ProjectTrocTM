@@ -10,6 +10,7 @@ import com.example.wlt_groupe03.databinding.FragmentAddItemsBinding
 import com.example.wlt_groupe03.databinding.FragmentListArticleItemBinding
 import com.example.wlt_groupe03.databinding.FragmentTrocManagerBinding
 import com.example.wlt_groupe03.dtos.DtoInputTroc
+import com.example.wlt_groupe03.dtos.DtoUser
 
 class TrocManagerFragment : Fragment() {
     private lateinit var viewModel: TrocManagerViewModel
@@ -44,12 +45,9 @@ class TrocManagerFragment : Fragment() {
         return binding.root
     }
 
-    fun changementVue(){
-        parentFragmentManager
-            .beginTransaction()
-            .replace(R.id.rv_listArticle, detailArticleFragment)
-            .commit()
-    }
+
+
+
 
 
 
