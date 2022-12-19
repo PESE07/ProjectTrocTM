@@ -31,11 +31,8 @@ class MainMenuActivity : AppCompatActivity() {
 
         binding.btnAddItem.setOnClickListener {
 
-
-                val intent = Intent(this, AddingItems::class.java)
-                startActivity(intent)
-
-
+            val intent = Intent(this, AddingItems::class.java)
+            startActivity(intent)
         }
     }
 }

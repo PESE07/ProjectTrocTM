@@ -15,8 +15,7 @@ class TrocManagerViewModel : ViewModel() {
     private val trocRepository = RetrofitHelper.newInstance().create(TrocRepository::class.java)
     val mutableLiveDataListTroc: MutableLiveData<List<DtoInputTroc>> = MutableLiveData()
     val mutableLiveDataCreateArticle: MutableLiveData<DtoInputTroc> = MutableLiveData()
-    private var dtoUser : DtoUser? = null
-
+    private var dtoUser : DtoUser?  = null
 
 
     fun launchFetchAllTodo(){
@@ -37,18 +36,32 @@ class TrocManagerViewModel : ViewModel() {
         }
     }
 
-    fun launchGetUser(email : String, mdp :String): DtoUser? {
+    fun launchGetUser(email : String, mdp :String) {
         viewModelScope.launch {
 
             try{
-                dtoUser = trocRepository.connexion(email, mdp)
+                affectationUser(trocRepository.connexion(email, mdp))
+
             }
             catch(e : HttpException){
-                dtoUser = null
+                affectationUser(null)
+
             }
+
         }
+
+    }
+
+    fun affectationUser(user: DtoUser?){
+
+        dtoUser = user
+    }
+
+    fun recupUser() : DtoUser? {
         return dtoUser
     }
+
+
 
 
 

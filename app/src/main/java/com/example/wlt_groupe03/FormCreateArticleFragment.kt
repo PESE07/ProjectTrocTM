@@ -1,5 +1,8 @@
 package com.example.wlt_groupe03
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,12 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.wlt_groupe03.databinding.FragmentAddItemsBinding
 import com.example.wlt_groupe03.databinding.FragmentFormCreateArticleBinding
 import com.example.wlt_groupe03.dtos.DtoOutputAddItem
+import retrofit2.http.Url
 
 class FormCreateArticleFragment : Fragment() {
     private lateinit var binding: FragmentFormCreateArticleBinding
     private lateinit var viewModel: TrocManagerViewModel
     private var callbackOnSubmit:((dto: DtoOutputAddItem)->Unit)? = null
-
 
 
     override fun onCreateView(
@@ -44,11 +47,16 @@ class FormCreateArticleFragment : Fragment() {
             }
         }
         return binding.root
+
+
     }
 
     companion object {
+
         @JvmStatic
         fun newInstance(callback: ((DtoOutputAddItem) -> Unit)) =
             FormCreateArticleFragment().apply { callbackOnSubmit = callback }
     }
+
+
 }
