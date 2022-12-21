@@ -16,6 +16,7 @@ class TrocManagerViewModel : ViewModel() {
     val mutableLiveDataListTroc: MutableLiveData<List<DtoInputTroc>> = MutableLiveData()
     val mutableLiveDataCreateArticle: MutableLiveData<DtoInputTroc> = MutableLiveData()
     val mutableLiveDataLoginUser: MutableLiveData<DtoUser?> = MutableLiveData()
+    val mutableLiveDataDeleteArticle : MutableLiveData<DtoInputTroc> = MutableLiveData()
 
 
 
@@ -31,7 +32,7 @@ class TrocManagerViewModel : ViewModel() {
 
     fun launchCreateArticle(dtoOutputAddItem: DtoOutputAddItem){
         viewModelScope.launch {
-            val article = trocRepository.create(dtoOutputAddItem.name, dtoOutputAddItem.urlImage,
+            val article = trocRepository.createArticle(dtoOutputAddItem.name, dtoOutputAddItem.urlImage,
                 dtoOutputAddItem.categoryName, dtoOutputAddItem.description)
 
             mutableLiveDataCreateArticle.postValue(article)
@@ -56,6 +57,15 @@ class TrocManagerViewModel : ViewModel() {
         viewModelScope.launch {
 
             trocRepository.update(name, description, url, id)
+
+        }
+    }
+
+    fun launchDeleteArticle(dtoInputTroc: DtoInputTroc) {
+        viewModelScope.launch {
+
+            trocRepository.deleteArticle(dtoInputTroc.id)
+            mutableLiveDataDeleteArticle.postValue(dtoInputTroc)
 
         }
     }

@@ -1,7 +1,7 @@
 package com.example.wlt_groupe03
 
-import android.content.Intent
-import android.net.Uri
+import android.app.AlertDialog
+import android.app.AlertDialog.Builder
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,19 +9,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-
 import com.example.wlt_groupe03.placeholder.PlaceholderContent.PlaceholderItem
-import com.example.wlt_groupe03.databinding.FragmentListArticleBinding
-import com.example.wlt_groupe03.databinding.FragmentListArticleItemBinding
-import com.example.wlt_groupe03.databinding.FragmentTrocManagerBinding
 import com.example.wlt_groupe03.dtos.DtoInputTroc
-import retrofit2.http.Url
-import java.net.HttpURLConnection
-import java.net.URL
+
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
@@ -30,6 +22,9 @@ import java.net.URL
 class TrocRecyclerViewAdapter(private val values: List<DtoInputTroc>) : RecyclerView.Adapter<TrocRecyclerViewAdapter.ViewHolder>() {
 
     var onItemOnClickListener: ((item: DtoInputTroc)-> Unit)? = null;
+    var onItemDeleteOnClickListener: ((item: DtoInputTroc)-> Unit)? = null;
+
+
 
     inner class ViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -62,6 +57,27 @@ class TrocRecyclerViewAdapter(private val values: List<DtoInputTroc>) : Recycler
         holder.itemView.setOnClickListener {
             val item = values[position]
             onItemOnClickListener?.invoke(item)
+        }
+
+        holder.itemView.setOnLongClickListener { view ->
+            val options = arrayOf("Voir le détail et modifier l'article ", "Supprimer l'article")
+            val builder = AlertDialog.Builder(view.context)
+            builder.setTitle("Choisissez une option")
+                .setItems(options) { _, which ->
+                    when (which) {
+                        0 -> {
+                            val item = values[position]
+                            onItemOnClickListener?.invoke(item)
+                        }
+                        1 -> {
+                            val item = values[position]
+                            onItemDeleteOnClickListener?.invoke(item)
+                        }
+
+                    }
+                }
+            builder.create().show()
+            true
         }
     }
 

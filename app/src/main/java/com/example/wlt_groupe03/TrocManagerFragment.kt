@@ -6,11 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.wlt_groupe03.databinding.FragmentAddItemsBinding
-import com.example.wlt_groupe03.databinding.FragmentListArticleItemBinding
 import com.example.wlt_groupe03.databinding.FragmentTrocManagerBinding
-import com.example.wlt_groupe03.dtos.DtoInputTroc
-import com.example.wlt_groupe03.dtos.DtoUser
 
 class TrocManagerFragment : Fragment() {
     private lateinit var viewModel: TrocManagerViewModel
@@ -30,12 +26,16 @@ class TrocManagerFragment : Fragment() {
 
         // affichage des articles
         viewModel.mutableLiveDataListTroc.observe(viewLifecycleOwner){
-            listArticleFragment.replaceTrocList(it)
+            listArticleFragment.replaceArticleList(it)
         }
 
         // création des articles
         viewModel.mutableLiveDataCreateArticle.observe(viewLifecycleOwner){
-            listArticleFragment.addTroc(it)
+            listArticleFragment.addArticle(it)
+        }
+
+        viewModel.mutableLiveDataDeleteArticle.observe(viewLifecycleOwner){
+            listArticleFragment.deleteArticle(it)
         }
 
 

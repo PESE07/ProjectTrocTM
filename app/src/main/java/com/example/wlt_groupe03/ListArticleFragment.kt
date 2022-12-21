@@ -7,10 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.example.wlt_groupe03.databinding.FragmentListArticleBinding
+import androidx.lifecycle.ViewModelProvider
 import com.example.wlt_groupe03.databinding.FragmentListArticleItemBinding
-import com.example.wlt_groupe03.databinding.FragmentTrocManagerBinding
 import com.example.wlt_groupe03.dtos.DtoInputTroc
 
 /**
@@ -21,8 +19,7 @@ class ListArticleFragment : Fragment() {
     private val trocAdapter = TrocRecyclerViewAdapter(trocList)
     private lateinit var binding: FragmentListArticleItemBinding
     private lateinit var detailArticleFragment : DetailArticleFragment
- 
-
+    private lateinit var viewModel: TrocManagerViewModel
 
 
     override fun onCreateView(
@@ -31,6 +28,8 @@ class ListArticleFragment : Fragment() {
     ): View? {
         binding = FragmentListArticleItemBinding.inflate(layoutInflater,container, false)
         val view = inflater.inflate(R.layout.fragment_list_article, container, false)
+        viewModel = ViewModelProvider(this).get(TrocManagerViewModel::class.java)
+
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
@@ -43,6 +42,9 @@ class ListArticleFragment : Fragment() {
                             .replace(R.id.fragmentContainerView, detailArticleFragment)
                             .commit()
                     }
+                    onItemDeleteOnClickListener = {
+                        viewModel.launchDeleteArticle(it)
+                    }
                 }
             }
         }
@@ -50,14 +52,19 @@ class ListArticleFragment : Fragment() {
         return view
     }
 
-    fun replaceTrocList(list: List<DtoInputTroc>){
+    fun replaceArticleList(list: List<DtoInputTroc>){
         trocList.clear()
         trocList.addAll(list)
         trocAdapter.notifyDataSetChanged()
     }
 
-    fun addTroc(dto:DtoInputTroc){
+    fun addArticle(dto:DtoInputTroc){
         trocList.add(dto)
+        trocAdapter.notifyDataSetChanged()
+    }
+
+    fun deleteArticle(dto:DtoInputTroc){
+        trocList.remove(dto)
         trocAdapter.notifyDataSetChanged()
     }
 
