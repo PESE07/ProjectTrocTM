@@ -41,11 +41,7 @@ class MainMenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnModifyProfile.setOnClickListener {
 
-            val intent = Intent(this, ModifyProfileActivity::class.java)
-            startActivity(intent)
-        }
     }
 }
 

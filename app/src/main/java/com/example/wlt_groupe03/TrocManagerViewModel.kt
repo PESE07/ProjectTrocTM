@@ -1,5 +1,6 @@
 package com.example.wlt_groupe03
 
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -24,9 +25,16 @@ class TrocManagerViewModel : ViewModel() {
         viewModelScope.launch {
             // flèche tout à gauche signifie qu'on est bien synchrone
 
-            val articleList = trocRepository.fetchAll()
+            try{
+                val articleList = trocRepository.fetchAll()
+                mutableLiveDataListTroc.postValue(articleList)
+            }
+            catch(e : Exception){
 
-            mutableLiveDataListTroc.postValue(articleList)
+            }
+
+
+
         }
     }
 
@@ -66,7 +74,6 @@ class TrocManagerViewModel : ViewModel() {
 
             trocRepository.deleteArticle(dtoInputTroc.id)
             mutableLiveDataDeleteArticle.postValue(dtoInputTroc)
-
         }
     }
 

@@ -24,6 +24,9 @@ class TrocManagerFragment : Fragment() {
         listArticleFragment = childFragmentManager.findFragmentByTag("trocList") as ListArticleFragment
 
 
+        viewModel.mutableLiveDataDeleteArticle.observe(viewLifecycleOwner){
+            listArticleFragment.deleteArticle(it)
+        }
         // affichage des articles
         viewModel.mutableLiveDataListTroc.observe(viewLifecycleOwner){
             listArticleFragment.replaceArticleList(it)
@@ -34,9 +37,7 @@ class TrocManagerFragment : Fragment() {
             listArticleFragment.addArticle(it)
         }
 
-        viewModel.mutableLiveDataDeleteArticle.observe(viewLifecycleOwner){
-            listArticleFragment.deleteArticle(it)
-        }
+
 
 
         //lancement de la requete
