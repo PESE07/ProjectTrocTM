@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ModifyProfileActivity">
+
+    <EditText
+        android:id="@+id/tv_pseudo_user_modified"
+        android:layout_width="114dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginBottom="41dp"
+        android:text="Pseudo"
+        app:layout_constraintBottom_toTopOf="@+id/tv_email_user_modified"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/tv_email_user_modified"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="39dp"
+        android:text="Email"
+        app:layout_constraintBottom_toTopOf="@+id/tv_localite_user_modified"
+        app:layout_constraintEnd_toEndOf="@+id/tv_localite_user_modified"
+        app:layout_constraintStart_toStartOf="@+id/tv_localite_user_modified"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pseudo_user_modified" />
+
+    <EditText
+        android:id="@+id/tv_localite_user_modified"
+        android:layout_width="118dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="73dp"
+        android:text="Localité"
+        app:layout_constraintBottom_toTopOf="@+id/btn_modify_user_datas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email_user_modified" />
+
+    <Button
+        android:id="@+id/btn_modify_user_datas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="357dp"
+        android:text="Modifier mes données"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_localite_user_modified"
+        app:layout_constraintTop_toBottomOf="@+id/tv_localite_user_modified" />
+</androidx.constraintlayout.widget.ConstraintLayout>

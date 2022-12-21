@@ -7,13 +7,19 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.wlt_groupe03.databinding.ActivityMainBinding
 import com.example.wlt_groupe03.databinding.ActivityMainMenuBinding
+import com.example.wlt_groupe03.dtos.DtoUser
 
 class MainMenuActivity : AppCompatActivity() {
 
     lateinit var binding:ActivityMainMenuBinding
+    // constructeur avec arguments
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
 
@@ -34,5 +40,13 @@ class MainMenuActivity : AppCompatActivity() {
             val intent = Intent(this, AddingItems::class.java)
             startActivity(intent)
         }
+
+        binding.btnModifyProfile.setOnClickListener {
+
+            val intent = Intent(this, ModifyProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
+
+

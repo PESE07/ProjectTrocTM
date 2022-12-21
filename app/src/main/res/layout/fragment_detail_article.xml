@@ -18,11 +18,49 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
+    <EditText
         android:id="@+id/tv_descriptionArticle"
         android:layout_width="408dp"
         android:layout_height="51dp"
         android:layout_marginTop="172dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_modify_article"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modifier l'article"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_name_article"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_width="408dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="240dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/et_url_article"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_width="408dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="300dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

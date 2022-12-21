@@ -15,12 +15,14 @@ class TrocManagerViewModel : ViewModel() {
     private val trocRepository = RetrofitHelper.newInstance().create(TrocRepository::class.java)
     val mutableLiveDataListTroc: MutableLiveData<List<DtoInputTroc>> = MutableLiveData()
     val mutableLiveDataCreateArticle: MutableLiveData<DtoInputTroc> = MutableLiveData()
-    private var dtoUser : DtoUser?  = null
+    val mutableLiveDataLoginUser: MutableLiveData<DtoUser?> = MutableLiveData()
+
 
 
     fun launchFetchAllTodo(){
         viewModelScope.launch {
             // flèche tout à gauche signifie qu'on est bien synchrone
+
             val articleList = trocRepository.fetchAll()
 
             mutableLiveDataListTroc.postValue(articleList)
@@ -40,26 +42,27 @@ class TrocManagerViewModel : ViewModel() {
         viewModelScope.launch {
 
             try{
-                affectationUser(trocRepository.connexion(email, mdp))
+                mutableLiveDataLoginUser.postValue(trocRepository.connexion(email, mdp))
 
             }
             catch(e : HttpException){
-                affectationUser(null)
-
+                mutableLiveDataLoginUser.postValue(null)
             }
 
         }
-
     }
 
-    fun affectationUser(user: DtoUser?){
+    fun launchUpdateArticle(name : String, description :String,url : String, id : Int ) {
+        viewModelScope.launch {
 
-        dtoUser = user
+            trocRepository.update(name, description, url, id)
+
+        }
     }
 
-    fun recupUser() : DtoUser? {
-        return dtoUser
-    }
+
+
+
 
 
 

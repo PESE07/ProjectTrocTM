@@ -21,7 +21,7 @@ class ListArticleFragment : Fragment() {
     private val trocAdapter = TrocRecyclerViewAdapter(trocList)
     private lateinit var binding: FragmentListArticleItemBinding
     private lateinit var detailArticleFragment : DetailArticleFragment
-    private lateinit var trocManagerFragment : TrocManagerFragment
+ 
 
 
 

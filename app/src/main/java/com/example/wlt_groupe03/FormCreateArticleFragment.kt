@@ -20,7 +20,6 @@ class FormCreateArticleFragment : Fragment() {
     private lateinit var viewModel: TrocManagerViewModel
     private var callbackOnSubmit:((dto: DtoOutputAddItem)->Unit)? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,6 +44,8 @@ class FormCreateArticleFragment : Fragment() {
                 viewModel.launchCreateArticle(article)
 
             }
+
+
         }
         return binding.root
 
