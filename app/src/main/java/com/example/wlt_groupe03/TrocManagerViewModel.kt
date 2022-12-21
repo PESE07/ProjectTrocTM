@@ -1,6 +1,6 @@
 package com.example.wlt_groupe03
 
-import android.widget.Toast
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,6 +11,7 @@ import com.example.wlt_groupe03.repositories.TrocRepository
 import com.example.wlt_groupe03.utils.RetrofitHelper
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
+import retrofit2.Response
 
 class TrocManagerViewModel : ViewModel() {
     private val trocRepository = RetrofitHelper.newInstance().create(TrocRepository::class.java)
@@ -18,7 +19,7 @@ class TrocManagerViewModel : ViewModel() {
     val mutableLiveDataCreateArticle: MutableLiveData<DtoInputTroc> = MutableLiveData()
     val mutableLiveDataLoginUser: MutableLiveData<DtoUser?> = MutableLiveData()
     val mutableLiveDataDeleteArticle : MutableLiveData<DtoInputTroc> = MutableLiveData()
-
+    val mutableLiveDataError : MutableLiveData<String> = MutableLiveData()
 
 
     fun launchFetchAllTodo(){
@@ -30,11 +31,8 @@ class TrocManagerViewModel : ViewModel() {
                 mutableLiveDataListTroc.postValue(articleList)
             }
             catch(e : Exception){
-
+                mutableLiveDataError.postValue("errorLogin")
             }
-
-
-
         }
     }
 
@@ -76,6 +74,8 @@ class TrocManagerViewModel : ViewModel() {
             mutableLiveDataDeleteArticle.postValue(dtoInputTroc)
         }
     }
+
+
 
 
 

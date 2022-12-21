@@ -1,5 +1,6 @@
 package com.example.wlt_groupe03
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.wlt_groupe03.databinding.FragmentListArticleItemBinding
 import com.example.wlt_groupe03.dtos.DtoInputTroc
@@ -44,6 +46,9 @@ class ListArticleFragment : Fragment() {
                     }
                     onItemDeleteOnClickListener = {
                         viewModel.launchDeleteArticle(it)
+                        Toast.makeText(activity, "L'article a bien été supprimé", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(activity, MainMenuActivity::class.java)
+                        startActivity(intent)
                     }
                 }
             }

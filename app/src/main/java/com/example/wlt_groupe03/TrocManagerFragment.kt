@@ -6,13 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.wlt_groupe03.databinding.FragmentTrocManagerBinding
 
 class TrocManagerFragment : Fragment() {
     private lateinit var viewModel: TrocManagerViewModel
     private lateinit var binding: FragmentTrocManagerBinding
     private lateinit var listArticleFragment: ListArticleFragment
-    private lateinit var detailArticleFragment : DetailArticleFragment
+
 
 
     override fun onCreateView(
@@ -23,6 +24,10 @@ class TrocManagerFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(TrocManagerViewModel::class.java)
         listArticleFragment = childFragmentManager.findFragmentByTag("trocList") as ListArticleFragment
 
+
+        viewModel.mutableLiveDataError.observe(viewLifecycleOwner){
+            Toast.makeText(activity, "Vous n'avez aucun article",Toast.LENGTH_SHORT).show()
+        }
 
         viewModel.mutableLiveDataDeleteArticle.observe(viewLifecycleOwner){
             listArticleFragment.deleteArticle(it)
