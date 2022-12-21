@@ -7,14 +7,15 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface TrocRepository {
     @GET("Article/Id_Users")
     suspend fun fetchAll(): List<DtoInputTroc>
 
-    @DELETE
-    suspend fun deleteArticle(@Query("id") id :Int) : Response<Void?>
+    @DELETE("Article/{id}")
+    suspend fun deleteArticle(@Path("id") id :Int) : Response<Void?>
 
     @POST("Article/Create")
     suspend fun createArticle(@Query("name") name:String,
