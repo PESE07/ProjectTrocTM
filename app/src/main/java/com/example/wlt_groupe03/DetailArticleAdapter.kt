@@ -8,11 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 
-import com.example.wlt_groupe03.dtos.DtoInputTroc
+import com.example.wlt_groupe03.dtos.DtoInputArticle
 
 
 class DetailArticleAdapter(
-    private val values: DtoInputTroc
+    private val values: DtoInputArticle
 ) : RecyclerView.Adapter<DetailArticleAdapter.ViewHolder>() {
 
 

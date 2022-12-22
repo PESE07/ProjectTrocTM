@@ -1,8 +1,5 @@
 package com.example.wlt_groupe03
 
-import android.app.Activity
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,15 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.wlt_groupe03.databinding.FragmentAddItemsBinding
 import com.example.wlt_groupe03.databinding.FragmentFormCreateArticleBinding
-import com.example.wlt_groupe03.dtos.DtoOutputAddItem
-import retrofit2.http.Url
+import com.example.wlt_groupe03.dtos.DtoOutputAddArticle
 
 class FormCreateArticleFragment : Fragment() {
     private lateinit var binding: FragmentFormCreateArticleBinding
     private lateinit var viewModel: TrocManagerViewModel
-    private var callbackOnSubmit:((dto: DtoOutputAddItem)->Unit)? = null
+    private var callbackOnSubmit:((dto: DtoOutputAddArticle)->Unit)? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +28,7 @@ class FormCreateArticleFragment : Fragment() {
                 Toast.makeText(it.context, "Veuillez remplir tout les champs si dessus", Toast.LENGTH_SHORT).show()
             }
             else{
-                val article = DtoOutputAddItem(binding.etNomArticle.text.toString(),binding.etImageArticle.text.toString()
+                val article = DtoOutputAddArticle(binding.etNomArticle.text.toString(),binding.etImageArticle.text.toString()
                     ,binding.etCategorieArticle.text.toString(),binding.etDescriptionArticle.text.toString())
                 binding.etNomArticle.text.clear()
                 binding.etImageArticle.text.clear()
@@ -55,7 +50,7 @@ class FormCreateArticleFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(callback: ((DtoOutputAddItem) -> Unit)) =
+        fun newInstance(callback: ((DtoOutputAddArticle) -> Unit)) =
             FormCreateArticleFragment().apply { callbackOnSubmit = callback }
     }
 

@@ -43,6 +43,11 @@ class MainMenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnAfficherUtilisateurs.setOnClickListener {
+            val intent = Intent(this, DisplayUsersActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 }

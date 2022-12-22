@@ -19,14 +19,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".DisplayingAllItems"
+            android:name=".QRCodeLoginActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ModifyProfileActivity"
+            android:name=".DisplayUsersActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".DisplayingAllItems"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

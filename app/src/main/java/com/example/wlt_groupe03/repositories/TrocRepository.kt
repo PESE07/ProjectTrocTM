@@ -1,6 +1,6 @@
 package com.example.wlt_groupe03.repositories
 
-import com.example.wlt_groupe03.dtos.DtoInputTroc
+import com.example.wlt_groupe03.dtos.DtoInputArticle
 import com.example.wlt_groupe03.dtos.DtoUser
 import retrofit2.Response
 import retrofit2.http.DELETE
@@ -12,10 +12,13 @@ import retrofit2.http.Query
 
 interface TrocRepository {
     @GET("Article/Id_Users")
-    suspend fun fetchAllArticleForUser(): List<DtoInputTroc>
+    suspend fun fetchAllArticleForUser(): List<DtoInputArticle>
 
     @GET("Article")
-    suspend fun fetchAllArticle(): List<DtoInputTroc>
+    suspend fun fetchAllArticle(): List<DtoInputArticle>
+
+    @GET("Users")
+    suspend fun fetchAllUsers(): List<DtoUser>
 
     @DELETE("Article/{id}")
     suspend fun deleteArticle(@Path("id") id :Int) : Response<Void?>
@@ -24,7 +27,7 @@ interface TrocRepository {
     suspend fun createArticle(@Query("name") name:String,
                               @Query("urlImage") urlImage:String,
                               @Query("nomCat") categoryName:String,
-                              @Query("description") description:String):DtoInputTroc
+                              @Query("description") description:String):DtoInputArticle
 
 
     @POST("Users/connexion")

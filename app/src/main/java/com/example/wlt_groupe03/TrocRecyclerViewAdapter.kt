@@ -8,16 +8,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import com.example.wlt_groupe03.placeholder.PlaceholderContent.PlaceholderItem
-import com.example.wlt_groupe03.dtos.DtoInputTroc
+import com.example.wlt_groupe03.dtos.DtoInputArticle
 
 
 
-class TrocRecyclerViewAdapter(private val values: List<DtoInputTroc>) : RecyclerView.Adapter<TrocRecyclerViewAdapter.ViewHolder>() {
+class TrocRecyclerViewAdapter(private val values: List<DtoInputArticle>) : RecyclerView.Adapter<TrocRecyclerViewAdapter.ViewHolder>() {
 
-    var onItemUpdateOnClickListener: ((item: DtoInputTroc)-> Unit)? = null
-    var onItemDeleteOnClickListener: ((item: DtoInputTroc)-> Unit)? = null
-    var onItemDetailOnClickListener: ((item: DtoInputTroc) -> Unit)? = null
+    var onItemUpdateOnClickListener: ((item: DtoInputArticle)-> Unit)? = null
+    var onItemDeleteOnClickListener: ((item: DtoInputArticle)-> Unit)? = null
+    var onItemDetailOnClickListener: ((item: DtoInputArticle) -> Unit)? = null
 
 
     inner class ViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {

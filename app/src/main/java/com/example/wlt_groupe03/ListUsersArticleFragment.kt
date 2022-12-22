@@ -11,13 +11,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.wlt_groupe03.databinding.FragmentListArticleItemBinding
-import com.example.wlt_groupe03.dtos.DtoInputTroc
+import com.example.wlt_groupe03.dtos.DtoInputArticle
 
 /**
  * A fragment representing a list of Items.
  */
 class ListUsersArticleFragment : Fragment() {
-    private val trocList:ArrayList<DtoInputTroc> = arrayListOf()
+    private val trocList:ArrayList<DtoInputArticle> = arrayListOf()
     private val trocAdapter = TrocRecyclerViewAdapter(trocList)
     private lateinit var binding: FragmentListArticleItemBinding
     private lateinit var updateArticleFragment : UpdateArticleFragment
@@ -65,18 +65,18 @@ class ListUsersArticleFragment : Fragment() {
         return view
     }
 
-    fun replaceArticleList(list: List<DtoInputTroc>){
+    fun replaceArticleList(list: List<DtoInputArticle>){
         trocList.clear()
         trocList.addAll(list)
         trocAdapter.notifyDataSetChanged()
     }
 
-    fun addArticle(dto:DtoInputTroc){
+    fun addArticle(dto:DtoInputArticle){
         trocList.add(dto)
         trocAdapter.notifyDataSetChanged()
     }
 
-    fun deleteArticle(dto:DtoInputTroc){
+    fun deleteArticle(dto:DtoInputArticle){
         trocList.remove(dto)
         trocAdapter.notifyDataSetChanged()
     }

@@ -1,6 +1,5 @@
 package com.example.wlt_groupe03
 
-import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,12 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.wlt_groupe03.dtos.DtoInputTroc
+import com.example.wlt_groupe03.dtos.DtoInputArticle
 
 
-class AllArticleListViewAdapter(private val values: List<DtoInputTroc>) : RecyclerView.Adapter<AllArticleListViewAdapter.ViewHolder>() {
+class AllArticleListViewAdapter(private val values: List<DtoInputArticle>) : RecyclerView.Adapter<AllArticleListViewAdapter.ViewHolder>() {
 
-    var onItemDetailOnClickListener: ((item: DtoInputTroc) -> Unit)? = null
+    var onItemDetailOnClickListener: ((item: DtoInputArticle) -> Unit)? = null
 
 
     inner class ViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
