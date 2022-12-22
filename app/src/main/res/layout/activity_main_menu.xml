@@ -36,10 +36,10 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btn_display_items"
+                android:id="@+id/btn_display_my_items"
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
-                android:text="Afficher les articles" />
+                android:text="Mes articles" />
         </TableRow>
 
         <TableRow
@@ -58,10 +58,10 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btn_modify_profile"
+                android:id="@+id/btn_display_all_items"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Modifier ses données" />
+                android:text="Afficher tout les articles"/>
         </TableRow>
 
         <TableRow

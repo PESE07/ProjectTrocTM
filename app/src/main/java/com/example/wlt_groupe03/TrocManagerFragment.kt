@@ -12,7 +12,7 @@ import com.example.wlt_groupe03.databinding.FragmentTrocManagerBinding
 class TrocManagerFragment : Fragment() {
     private lateinit var viewModel: TrocManagerViewModel
     private lateinit var binding: FragmentTrocManagerBinding
-    private lateinit var listArticleFragment: ListArticleFragment
+    private lateinit var listUsersArticleFragment: ListUsersArticleFragment
 
 
 
@@ -22,7 +22,7 @@ class TrocManagerFragment : Fragment() {
     ): View? {
         binding = FragmentTrocManagerBinding.inflate(layoutInflater,container, false)
         viewModel = ViewModelProvider(this).get(TrocManagerViewModel::class.java)
-        listArticleFragment = childFragmentManager.findFragmentByTag("trocList") as ListArticleFragment
+        listUsersArticleFragment = childFragmentManager.findFragmentByTag("trocList") as ListUsersArticleFragment
 
 
         viewModel.mutableLiveDataError.observe(viewLifecycleOwner){
@@ -30,23 +30,23 @@ class TrocManagerFragment : Fragment() {
         }
 
         viewModel.mutableLiveDataDeleteArticle.observe(viewLifecycleOwner){
-            listArticleFragment.deleteArticle(it)
+            listUsersArticleFragment.deleteArticle(it)
         }
         // affichage des articles
-        viewModel.mutableLiveDataListTroc.observe(viewLifecycleOwner){
-            listArticleFragment.replaceArticleList(it)
+        viewModel.mutableLiveDataListUsersArticle.observe(viewLifecycleOwner){
+            listUsersArticleFragment.replaceArticleList(it)
         }
 
         // création des articles
         viewModel.mutableLiveDataCreateArticle.observe(viewLifecycleOwner){
-            listArticleFragment.addArticle(it)
+            listUsersArticleFragment.addArticle(it)
         }
 
 
 
 
         //lancement de la requete
-        viewModel.launchFetchAllTodo()
+        viewModel.launchFetchAllUsersArticle()
 
         return binding.root
     }

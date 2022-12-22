@@ -29,7 +29,7 @@ class DetailArticleAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.fragment_detail_article,parent,false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.fragment_update_article,parent,false)
 
         return ViewHolder(v)
 

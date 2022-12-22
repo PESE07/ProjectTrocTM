@@ -12,7 +12,10 @@ import retrofit2.http.Query
 
 interface TrocRepository {
     @GET("Article/Id_Users")
-    suspend fun fetchAll(): List<DtoInputTroc>
+    suspend fun fetchAllArticleForUser(): List<DtoInputTroc>
+
+    @GET("Article")
+    suspend fun fetchAllArticle(): List<DtoInputTroc>
 
     @DELETE("Article/{id}")
     suspend fun deleteArticle(@Path("id") id :Int) : Response<Void?>

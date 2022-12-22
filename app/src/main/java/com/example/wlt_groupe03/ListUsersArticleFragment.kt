@@ -16,12 +16,13 @@ import com.example.wlt_groupe03.dtos.DtoInputTroc
 /**
  * A fragment representing a list of Items.
  */
-class ListArticleFragment : Fragment() {
+class ListUsersArticleFragment : Fragment() {
     private val trocList:ArrayList<DtoInputTroc> = arrayListOf()
     private val trocAdapter = TrocRecyclerViewAdapter(trocList)
     private lateinit var binding: FragmentListArticleItemBinding
-    private lateinit var detailArticleFragment : DetailArticleFragment
+    private lateinit var updateArticleFragment : UpdateArticleFragment
     private lateinit var viewModel: TrocManagerViewModel
+    private lateinit var detailArticleFragment: DetailArticleFragment
 
 
     override fun onCreateView(
@@ -29,7 +30,7 @@ class ListArticleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentListArticleItemBinding.inflate(layoutInflater,container, false)
-        val view = inflater.inflate(R.layout.fragment_list_article, container, false)
+        val view = inflater.inflate(R.layout.fragment_list_users_article, container, false)
         viewModel = ViewModelProvider(this).get(TrocManagerViewModel::class.java)
 
         // Set the adapter
@@ -37,11 +38,11 @@ class ListArticleFragment : Fragment() {
             with(view) {
                 layoutManager = LinearLayoutManager(context)
                 adapter = trocAdapter.apply {
-                    onItemOnClickListener = {
-                        detailArticleFragment = DetailArticleFragment(it)
+                    onItemUpdateOnClickListener = {
+                        updateArticleFragment = UpdateArticleFragment(it)
                         parentFragmentManager
                             .beginTransaction()
-                            .replace(R.id.fragmentContainerView, detailArticleFragment)
+                            .replace(R.id.fragmentContainerView, updateArticleFragment)
                             .commit()
                     }
                     onItemDeleteOnClickListener = {
@@ -49,6 +50,13 @@ class ListArticleFragment : Fragment() {
                         Toast.makeText(activity, "L'article a bien été supprimé", Toast.LENGTH_SHORT).show()
                         val intent = Intent(activity, MainMenuActivity::class.java)
                         startActivity(intent)
+                    }
+                    onItemDetailOnClickListener = {
+                        detailArticleFragment = DetailArticleFragment(it)
+                        parentFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.fragmentContainerView, detailArticleFragment)
+                            .commit()
                     }
                 }
             }
@@ -76,6 +84,6 @@ class ListArticleFragment : Fragment() {
 
 
     companion object {
-        fun newInstance() = ListArticleFragment()
+        fun newInstance() = ListUsersArticleFragment()
     }
 }

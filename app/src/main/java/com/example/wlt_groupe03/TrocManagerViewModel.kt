@@ -11,28 +11,40 @@ import com.example.wlt_groupe03.repositories.TrocRepository
 import com.example.wlt_groupe03.utils.RetrofitHelper
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
-import retrofit2.Response
 
 class TrocManagerViewModel : ViewModel() {
     private val trocRepository = RetrofitHelper.newInstance().create(TrocRepository::class.java)
-    val mutableLiveDataListTroc: MutableLiveData<List<DtoInputTroc>> = MutableLiveData()
+    val mutableLiveDataListUsersArticle: MutableLiveData<List<DtoInputTroc>> = MutableLiveData()
     val mutableLiveDataCreateArticle: MutableLiveData<DtoInputTroc> = MutableLiveData()
     val mutableLiveDataLoginUser: MutableLiveData<DtoUser?> = MutableLiveData()
     val mutableLiveDataDeleteArticle : MutableLiveData<DtoInputTroc> = MutableLiveData()
     val mutableLiveDataError : MutableLiveData<String> = MutableLiveData()
+    val mutableLiveDataListArticle: MutableLiveData<List<DtoInputTroc>> = MutableLiveData()
 
 
-    fun launchFetchAllTodo(){
+
+    fun launchFetchAllUsersArticle(){
         viewModelScope.launch {
             // flèche tout à gauche signifie qu'on est bien synchrone
 
             try{
-                val articleList = trocRepository.fetchAll()
-                mutableLiveDataListTroc.postValue(articleList)
+                val articleList = trocRepository.fetchAllArticleForUser()
+                mutableLiveDataListUsersArticle.postValue(articleList)
             }
             catch(e : Exception){
                 mutableLiveDataError.postValue("errorLogin")
             }
+        }
+    }
+
+    fun launchFetchAllArticle(){
+        viewModelScope.launch {
+            // flèche tout à gauche signifie qu'on est bien synchrone
+
+
+                val articleList = trocRepository.fetchAllArticle()
+                mutableLiveDataListArticle.postValue(articleList)
+
         }
     }
 

@@ -1,29 +1,23 @@
 package com.example.wlt_groupe03
 
 import android.app.AlertDialog
-import android.app.AlertDialog.Builder
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.wlt_groupe03.placeholder.PlaceholderContent.PlaceholderItem
 import com.example.wlt_groupe03.dtos.DtoInputTroc
 
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
+
 class TrocRecyclerViewAdapter(private val values: List<DtoInputTroc>) : RecyclerView.Adapter<TrocRecyclerViewAdapter.ViewHolder>() {
 
-    var onItemOnClickListener: ((item: DtoInputTroc)-> Unit)? = null;
-    var onItemDeleteOnClickListener: ((item: DtoInputTroc)-> Unit)? = null;
-
+    var onItemUpdateOnClickListener: ((item: DtoInputTroc)-> Unit)? = null
+    var onItemDeleteOnClickListener: ((item: DtoInputTroc)-> Unit)? = null
+    var onItemDetailOnClickListener: ((item: DtoInputTroc) -> Unit)? = null
 
 
     inner class ViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -56,7 +50,7 @@ class TrocRecyclerViewAdapter(private val values: List<DtoInputTroc>) : Recycler
 
         holder.itemView.setOnClickListener {
             val item = values[position]
-            onItemOnClickListener?.invoke(item)
+            onItemDetailOnClickListener?.invoke(item)
         }
 
         holder.itemView.setOnLongClickListener { view ->
@@ -67,11 +61,27 @@ class TrocRecyclerViewAdapter(private val values: List<DtoInputTroc>) : Recycler
                     when (which) {
                         0 -> {
                             val item = values[position]
-                            onItemOnClickListener?.invoke(item)
+                            onItemUpdateOnClickListener?.invoke(item)
                         }
                         1 -> {
-                            val item = values[position]
-                            onItemDeleteOnClickListener?.invoke(item)
+
+                            val options2 = arrayOf("Oui", "Non")
+                            val builder2 = AlertDialog.Builder(view.context)
+                            builder2.setTitle("Etes vous sur de vouloir supprimer cet article?")
+                                .setItems(options2) { _, which ->
+                                    when (which) {
+                                        0 -> {
+                                            val item = values[position]
+                                            onItemDeleteOnClickListener?.invoke(item)
+                                        }
+                                        1 -> {
+
+                                        }
+
+                                    }
+                                }
+                            builder2.create().show()
+                            true
                         }
 
                     }

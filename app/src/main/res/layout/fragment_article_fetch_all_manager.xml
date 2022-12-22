@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TrocManagerFragment">
+    tools:context=".ArticleFetchAllManager">
+
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="com.example.wlt_groupe03.ListUsersArticleFragment"
+        android:id="@+id/fcv_article_fetch_all"
+        android:name="com.example.wlt_groupe03.ListAllArticleFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:tag="trocList"
-        tools:layout="@layout/fragment_list_users_article" />
+        android:tag="allArticleList"
+        tools:layout="@layout/fragment_list_all_article" />
 </FrameLayout>
