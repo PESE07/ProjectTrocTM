@@ -1,7 +1,6 @@
 package com.example.wlt_groupe03
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +9,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.wlt_groupe03.databinding.ActivityQrcodeLoginBinding
-import com.example.wlt_groupe03.dtos.DtoLogin
 
 class QRCodeLoginActivity : AppCompatActivity() {
     lateinit var viewModel: TrocManagerViewModel
@@ -21,7 +19,7 @@ class QRCodeLoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_qrcode_login)
 
         binding = ActivityQrcodeLoginBinding.inflate(layoutInflater)
-        viewModel = ViewModelProvider(this).get(TrocManagerViewModel::class.java)
+        viewModel = ViewModelProvider(this)[TrocManagerViewModel::class.java]
 
         if (ContextCompat.checkSelfPermission(
                 this@QRCodeLoginActivity,
@@ -105,5 +103,5 @@ class QRCodeLoginActivity : AppCompatActivity() {
 //        scannerView.setOnClickListener {
 //            codeScanner.startPreview()
 //        }
-    }
+ //   }
 }

@@ -1,12 +1,23 @@
 package com.example.wlt_groupe03
 
+import android.Manifest
 import android.app.AlertDialog
+import android.content.Context
+import android.content.Context.LOCATION_SERVICE
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationManager
+import android.net.Uri
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.ContextCompat.startActivity
 import com.bumptech.glide.Glide
 
 import com.example.wlt_groupe03.placeholder.PlaceholderContent.PlaceholderItem
@@ -19,6 +30,7 @@ class ListUsersAdapter(
     private val values: List<DtoUser>
 ) : RecyclerView.Adapter<ListUsersAdapter.ViewHolder>() {
 
+    var onItemLocationOnLongClickListener: ((item: DtoUser) -> Unit)? = null
     inner class ViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val nomUserView: TextView = itemView.findViewById(R.id.tv_nom_user)
@@ -53,9 +65,13 @@ class ListUsersAdapter(
 
         holder.itemView.setOnLongClickListener { view ->
 
+            val item = values[position]
+            onItemLocationOnLongClickListener?.invoke(item)
             true
         }
     }
+
+
 
     override fun getItemCount(): Int = values.size
 

@@ -40,13 +40,13 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnLogin.setOnClickListener {
 
-            if(binding.tvEmailUser.text.isNullOrBlank() || binding.tvPasswordUser.text.isNullOrBlank()){
+            if(binding.tvEmailUser.text.isNullOrBlank() || binding.etPasswordUser.text.isNullOrBlank()){
                 Toast.makeText(this, "Veuillez remplir tout les champs si dessus", Toast.LENGTH_SHORT).show()
             }
             else{
 
                 val mail = binding.tvEmailUser.text.toString()
-                val password = binding.tvPasswordUser.text.toString()
+                val password = binding.etPasswordUser.text.toString()
                 viewModel.launchGetUser(mail,password)
             }
         }

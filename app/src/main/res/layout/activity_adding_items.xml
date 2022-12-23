@@ -5,14 +5,14 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddingItems">
+    tools:context=".AddingItems"
+    android:background="@drawable/gradient_color_background">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView_fragmentAddArticle"
         android:name="com.example.wlt_groupe03.FormCreateArticleFragment"
-        android:layout_width="385dp"
-        android:layout_height="613dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="441dp"
+        android:layout_height="744dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.615"

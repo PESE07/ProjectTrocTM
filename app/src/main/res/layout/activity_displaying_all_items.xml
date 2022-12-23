@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayingAllItems">
+    tools:context=".DisplayingAllItems"
+    android:background="@drawable/gradient_color_border">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
@@ -14,5 +15,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout="@layout/fragment_article_fetch_all_manager" />
+        tools:layout="@layout/fragment_article_fetch_all_manager"
+       />
 </androidx.constraintlayout.widget.ConstraintLayout>

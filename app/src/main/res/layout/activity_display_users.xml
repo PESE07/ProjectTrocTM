@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayUsersActivity">
+    tools:context=".DisplayUsersActivity"
+    >
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView4"
@@ -15,5 +16,6 @@
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_users_manager" />
+        tools:layout="@layout/fragment_users_manager"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

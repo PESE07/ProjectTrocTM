@@ -12,4 +12,5 @@
     app:layoutManager="LinearLayoutManager"
     tools:context=".ListAllArticleFragment"
     tools:listitem="@layout/fragment_list_article_item"
+
     />

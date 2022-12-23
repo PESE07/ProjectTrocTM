@@ -4,6 +4,7 @@ package com.example.wlt_groupe03
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.wlt_groupe03.dtos.DtoCategory
 import com.example.wlt_groupe03.dtos.DtoInputArticle
 import com.example.wlt_groupe03.dtos.DtoOutputAddArticle
 import com.example.wlt_groupe03.dtos.DtoUser
@@ -21,6 +22,7 @@ class TrocManagerViewModel : ViewModel() {
     val mutableLiveDataError : MutableLiveData<String> = MutableLiveData()
     val mutableLiveDataListArticle: MutableLiveData<List<DtoInputArticle>> = MutableLiveData()
     val mutableLiveDataUsers: MutableLiveData<List<DtoUser>> = MutableLiveData()
+    val mutableLiveDataCategories: MutableLiveData<List<DtoCategory>> = MutableLiveData()
 
 
 
@@ -94,6 +96,13 @@ class TrocManagerViewModel : ViewModel() {
 
             trocRepository.deleteArticle(dtoInputTroc.id)
             mutableLiveDataDeleteArticle.postValue(dtoInputTroc)
+        }
+    }
+
+    fun launchFetchAllCategories() {
+        viewModelScope.launch {
+
+            mutableLiveDataCategories.postValue(trocRepository.fetchAllCategories())
         }
     }
 

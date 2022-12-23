@@ -1,5 +1,6 @@
 package com.example.wlt_groupe03.repositories
 
+import com.example.wlt_groupe03.dtos.DtoCategory
 import com.example.wlt_groupe03.dtos.DtoInputArticle
 import com.example.wlt_groupe03.dtos.DtoUser
 import retrofit2.Response
@@ -19,6 +20,9 @@ interface TrocRepository {
 
     @GET("Users")
     suspend fun fetchAllUsers(): List<DtoUser>
+
+    @GET("Category")
+    suspend fun fetchAllCategories() : List<DtoCategory>
 
     @DELETE("Article/{id}")
     suspend fun deleteArticle(@Path("id") id :Int) : Response<Void?>

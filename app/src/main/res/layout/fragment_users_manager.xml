@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UsersManagerFragment">
+    tools:context=".UsersManagerFragment"
+    android:background="@drawable/gradient_color_border">
 
 
     <androidx.fragment.app.FragmentContainerView
