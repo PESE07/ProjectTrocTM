@@ -1,6 +1,7 @@
 package com.example.wlt_groupe03
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -43,6 +44,10 @@ class FormCreateArticleFragment : Fragment() {
             spinner.adapter = adapter
         }
 
+        binding.btnAddCamera.setOnClickListener{
+            val intent = Intent(activity, CameraActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.btnAddItems.setOnClickListener {
 
