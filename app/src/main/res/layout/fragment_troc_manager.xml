@@ -10,6 +10,17 @@
         android:name="com.example.wlt_groupe03.ListUsersArticleFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
         android:tag="trocList"
         tools:layout="@layout/fragment_list_users_article" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="@drawable/gradient_color_background"
+        android:gravity="center"
+        android:text="Veuillez faire un appuie simple sur l'un des articles pour connaître son détail
+ et faire un appuie proloné pour mettre                          à jour ou supprimer votre article"
+        android:textStyle="bold" />
 </FrameLayout>

@@ -10,7 +10,17 @@
         android:id="@+id/fcv_article_fetch_all"
         android:name="com.example.wlt_groupe03.ListAllArticleFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:tag="allArticleList"
         tools:layout="@layout/fragment_list_all_article" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@drawable/gradient_color_background"
+        android:gravity="center"
+        android:text="Veuillez faire un appuie simple sur l'un des articles pour connaître son détail"
+        android:textStyle="bold"/>
 </FrameLayout>

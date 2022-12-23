@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         viewModel.mutableLiveDataLoginUser.observe(this) {
             val user = viewModel.mutableLiveDataLoginUser.value
 
-            Toast.makeText(this, "${user}", Toast.LENGTH_SHORT).show()
             if(user == null){
                 Toast.makeText(this, "Les données encoder ne sont pas correct", Toast.LENGTH_SHORT).show()
             }
